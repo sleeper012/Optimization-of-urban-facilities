@@ -1,2 +1,7 @@
+# 保持这些文件使用 LF，不自动转 CRLF
+*.geojson text eol=lf
+*.graphml text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
 munich_street_network.graphml filter=lfs diff=lfs merge=lfs -text
 munich_public_facilities.geojson filter=lfs diff=lfs merge=lfs -text

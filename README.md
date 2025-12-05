@@ -169,6 +169,141 @@ ox.save_graphml(graph, "munich_street_network.graphml")
 # 保存公共设施数据
 facilities_str.to_file("munich_public_facilities.geojson", driver='GeoJSON')
 
+
+"""
+正在下载 Munich, Germany 的数据，请耐心等待...
+街道网络下载完成。
+正在下载公共设施数据 (这可能需要几分钟)...
+数据保存成功！
+共下载了 47547 个设施点/区域。
+==================================================
+
+【AMENITY 类别】- 共 28070 个
+--------------------------------------------------
+amenity
+waste_basket        6649
+parking             5849
+bicycle_parking     5055
+restaurant          2082
+recycling           1186
+kindergarten         988
+doctors              855
+fast_food            822
+cafe                 808
+post_box             756
+charging_station     717
+toilets              435
+dentist              318
+pharmacy             316
+social_facility      300
+parcel_locker        222
+community_centre     184
+waste_disposal       182
+post_office          122
+childcare            100
+clinic                78
+bicycle_rental        35
+townhall               4
+fuel                   1
+biergarten             1
+public_building        1
+animal_training        1
+school                 1
+smoking_area           1
+driver_training        1
+
+【SHOP 类别】- 共 2990 个
+--------------------------------------------------
+shop
+hairdresser             952
+bakery                  693
+supermarket             587
+car_repair              208
+butcher                 172
+convenience             155
+greengrocer             121
+electronics              47
+kiosk                     9
+pastry                    6
+coffee                    5
+deli                      3
+confectionery             3
+rental                    3
+bicycle                   2
+yes                       2
+tea                       2
+stationery                1
+fabric                    1
+chemist                   1
+clothes                   1
+lottery                   1
+vacant                    1
+newsagent;stationery      1
+beauty                    1
+bakery;pastry             1
+bookmaker                 1
+scuba_diving              1
+alcohol                   1
+hifi                      1
+chocolate                 1
+ice_cream                 1
+video                     1
+medical_supply            1
+beverages                 1
+massage                   1
+collector                 1
+
+【LEISURE 类别】- 共 7316 个
+--------------------------------------------------
+leisure
+playground         2921
+pitch              2299
+park                951
+garden              758
+sports_centre       267
+fitness_station     119
+bowling_alley         1
+
+【LANDUSE 类别】- 共 7918 个
+--------------------------------------------------
+landuse
+grass                7835
+recreation_ground      49
+industrial             15
+meadow                  4
+forest                  3
+brownfield              2
+residential             2
+garages                 2
+farmland                2
+commercial              2
+landfill                1
+construction            1
+
+【OFFICE 类别】- 共 146 个
+--------------------------------------------------
+office
+government     130
+physician        7
+association      5
+company          2
+ngo              1
+foundation       1
+
+【POWER 类别】- 共 1397 个
+--------------------------------------------------
+power
+substation    1367
+plant           26
+22000            3
+80333            1
+
+==================================================
+数据保存位置:
+  - 路网: munich_street_network.graphml
+  - 设施: munich_public_facilities.geojson
+"""
+
 ```
 
 -----
