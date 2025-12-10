@@ -28,11 +28,11 @@ print(f"设施数量: {len(facilities)}")
 print(f"路网节点: {len(graph.nodes)}")
 
 # 2. 提取超市作为示例(最重要的日常设施)
-supermarkets = facilities[facilities['shop'] == 'supermarket'].copy()
-print(f"\n超市数量: {len(supermarkets)}")
+supermarkets = facilities[facilities['amenity'].isin(['community_centre', 'townhall'])].copy()
+print(f"\n社区综合服务站数量: {len(supermarkets)}")
 
 # 3. 将超市点投影到最近的路网节点
-print("\n正在匹配超市到路网节点...")
+print("\n正在匹配社区综合服务站到路网节点...")
 supermarkets = supermarkets.to_crs(epsg=4326)  # 确保是WGS84坐标系
 
 # 获取最近节点
@@ -47,7 +47,7 @@ for idx, row in supermarkets.iterrows():
 
 supermarkets['nearest_node'] = nearest_nodes
 supermarkets = supermarkets[supermarkets['nearest_node'].notna()]
-print(f"成功匹配 {len(supermarkets)} 个超市到路网")
+print(f"成功匹配 {len(supermarkets)} 个社区综合服务站到路网")
 
 # 4. 计算等时圈(选取前3个超市作为示例)
 print("\n正在计算15分钟步行可达范围...")
@@ -74,14 +74,14 @@ for i in range(sample_size):
     ax.scatter(center_x, center_y, c='red', s=200, marker='*', 
                zorder=5, edgecolors='black', linewidth=2)
     
-    ax.set_title(f'超市 #{i+1} 的15分钟步行圈\n(覆盖{len(subgraph.nodes)}个路口)', 
+    ax.set_title(f'社区综合服务站 #{i+1} 的15分钟步行圈\n(覆盖{len(subgraph.nodes)}个路口)', 
                  fontsize=12, fontweight='bold')
     ax.set_xlabel('经度')
     ax.set_ylabel('纬度')
 
 plt.tight_layout()
-plt.savefig('walkability_15min_supermarkets.png', dpi=300, bbox_inches='tight')
-print("\n可视化完成! 保存为: walkability_15min_supermarkets.png")
+plt.savefig('walkability_15min_社区综合服务站.png', dpi=600, bbox_inches='tight')
+print("\n可视化完成! 保存为: walkability_15min_社区综合服务站.png")
 plt.show()
 
 # 5. 覆盖率统计
@@ -98,7 +98,7 @@ for idx, row in supermarkets.iterrows():
 
 coverage_rate = len(covered_nodes) / total_nodes * 100
 print(f"总路网节点数: {total_nodes}")
-print(f"超市覆盖节点数: {len(covered_nodes)}")
+print(f"社区综合服务站覆盖节点数: {len(covered_nodes)}")
 print(f"覆盖率: {coverage_rate:.2f}%")
 
 print("\n" + "="*60)

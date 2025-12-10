@@ -53,9 +53,9 @@ print(f"✓ 路网节点数: {len(graph.nodes)}")
 print("\n" + "="*70)
 print("步骤2: 提取现有设施")
 print("="*70)
-supermarkets = facilities[facilities['shop'] == 'supermarket'].copy()
+supermarkets = facilities[facilities['shop'].isin(['community_centre', 'townhall'])].copy()
 supermarkets = supermarkets.to_crs(epsg=4326)
-print(f"✓ 现有超市: {len(supermarkets)} 个")
+print(f"✓ 现有社区综合服务站: {len(supermarkets)} 个")
 
 # 匹配到路网
 existing_facilities = []
@@ -306,7 +306,7 @@ if model.status == 1:  # Optimal
     
     # 现有设施
     ax2.scatter([c[0] for c in existing_coords], [c[1] for c in existing_coords],
-               c='blue', s=80, marker='o', label=f'现有超市({len(existing_facilities)}个)', 
+               c='blue', s=80, marker='o', label=f'现有社区综合服务站({len(existing_facilities)}个)', 
                zorder=4, edgecolors='white', linewidth=1)
     
     # 新增设施及其覆盖范围
@@ -339,11 +339,11 @@ if model.status == 1:  # Optimal
     ax2.set_ylabel('纬度', fontsize=12)
     ax2.legend(loc='upper right', fontsize=11, framealpha=0.9)
     
-    plt.suptitle('最大覆盖选址优化 - 超市设施布局改善方案', 
+    plt.suptitle('最大覆盖选址优化 - 社区综合服务站设施布局改善方案', 
                 fontsize=18, fontweight='bold', y=0.98)
     plt.tight_layout()
-    plt.savefig('facility_optimization_MCLP.png', dpi=300, bbox_inches='tight')
-    print("✓ 可视化完成: facility_optimization_MCLP.png")
+    plt.savefig('facility_optimization_MCLP_社区综合服务站.png', dpi=600, bbox_inches='tight')
+    print("✓ 可视化完成: facility_optimization_MCLP_社区综合服务站.png")
     plt.show()
     
 else:
